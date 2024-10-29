@@ -37,36 +37,7 @@ export default function Home() {
               
             </div>
             <div>
-              <Card className=" shadow-emerald-200 shadow-md border-emerald-400">
-                <CardHeader>
-                  <CardTitle>Looking for a job?</CardTitle>
-                  <CardDescription>
-                    Use JobLogr's AI tools to help you find your next job.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link
-                    href="https://joblogr.com?utm_source=venefish&utm_medium=landing&utm_campaign=ten"
-                    target="_blank"
-                    className="underline text-slate-800 font-medium"
-                  >
-                    JobLogr.com
-                  </Link>{" "}
-                  is an awesome job search tool that uses AI to help you find
-                  your next job faster than ever before. It's free to try, but
-                  if you decide to upgrade to the pro plan, you can use code
-                  "VENEFISH" for $10 off.
-                  <Link
-                    className={cn(
-                      buttonVariants({ size: "xl" }),
-                      "mt-4 w-full"
-                    )}
-                    href="https://joblogr.com?utm_source=venefish&utm_medium=landing&utm_campaign=ten"
-                  >
-                    Use JobLogr for Free
-                  </Link>
-                </CardContent>
-              </Card>
+              
             </div>
             <div>
                 
