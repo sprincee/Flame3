@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge"; // Not being utilized, replace with another component from SHADCN
+import { Badge } from "@/components/ui/badge"; // Not being utilized, replace with another component from SHADC
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
