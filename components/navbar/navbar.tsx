@@ -1,7 +1,7 @@
 import { NavbarMobile } from "@/components/navbar/navbar-mobile";
 import { NavbarUserLinks } from "@/components/navbar/navbar-user-links";
 import { buttonVariants } from "@/components/ui/button";
-import { Flame, ScanTextIcon } from "lucide-react";
+import { FlameKindling, ScanTextIcon } from "lucide-react";
 import { ModeToggle } from "@/components/ui/mode-toggle"; // Import the ModeToggle component
 import Link from "next/link";
 import { FC } from "react";
@@ -14,7 +14,7 @@ export const NavBar: FC = () => {
           <div className="flex items-center">
             <Link href="/" className="hover:opacity-80 transition-opacity">
               <div className="flex items-center">
-                <Flame className="w-8 h-8 mr-2 inline" />{" "}
+                <FlameKindling className="w-8 h-8 mr-2 inline" />{" "}
                 <span className="text-xl font-semibold tracking-tighter navbar-logo mr-6">
                   Flame
                 </span>
@@ -31,7 +31,7 @@ export const NavBar: FC = () => {
               </div>
               <div className="flex items-center space-x-4">
                 <NavbarUserLinks />
-                <ModeToggle /> {/* Add the ModeToggle component */}
+                <ModeToggle /> 
               </div>
             </div>
             <div className="grow md:hidden flex justify-end">

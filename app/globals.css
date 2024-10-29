@@ -82,3 +82,15 @@
   .dark .navbar-brand {
     color: var(--foreground) !important; 
   }
+
+:root {
+  --logo-color: var(--foreground);
+}
+
+.dark {
+  --logo-color: var(--primary-foreground);
+}
+
+.logo {
+  color: var(--logo-color);
+}
