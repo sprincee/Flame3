@@ -74,3 +74,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+  .navbar-brand {
+    color: var(--foreground); 
+  }
+
+  .dark .navbar-brand {
+    color: var(--foreground) !important; 
+  }
