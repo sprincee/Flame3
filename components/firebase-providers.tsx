@@ -13,6 +13,7 @@ import { getFirestore } from "firebase/firestore";
 import { isBrowser } from "@/lib/utils";
 import { getAnalytics } from "firebase/analytics";
 import { FirebaseOptions } from "firebase/app";
+import App from "next/app";
 
 const config: FirebaseOptions = {
   apiKey: "AIzaSyBqaL1bJoHxJ6YimBo38SuvWG35_d8tplc",
@@ -25,27 +26,29 @@ const config: FirebaseOptions = {
 };
 
 const FirebaseProviderSDKs: FC<{ children: ReactNode }> = ({ children }) => {
-  const firebase = useFirebaseApp();
+  const app = useFirebaseApp();
   // we have to use getters to pass to providers, children should use hooks
-  const auth = useMemo(() => getAuth(), []);
-  const firestore = useMemo(() => getFirestore(firebase), []);
-  const analytics = useMemo(() => isBrowser() && getAnalytics(firebase), []);
+  const auth = useMemo(() => getAuth(app), [app]);
+  const firestore = useMemo(() => getFirestore(app), [app]);
+  const analytics = useMemo(() => isBrowser() && getAnalytics(app), [app]);
+
+  if (!auth) {
+    console.error('Auth failed to initialize');
+    return null;
+  }
+
+
 
   return (
-    <>
-      {auth && (
         <AuthProvider sdk={auth}>
           <FirestoreProvider sdk={firestore}>
-            {/* we can only use analytics in the browser */}
             {analytics ? (
               <AnalyticsProvider sdk={analytics}>{children}</AnalyticsProvider>
             ) : (
-              <>{children}</>
+              children
             )}
           </FirestoreProvider>
         </AuthProvider>
-      )}
-    </>
   );
 };
 
