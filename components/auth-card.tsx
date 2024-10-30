@@ -13,8 +13,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useUser } from "reactfire";
 
-export const AuthCard = () => {
-  const [isShowingSignUp, setIsShowingSignUp] = useState<boolean>(false);
+interface AuthCardProps {
+  isShowingSignUp: boolean;
+  setIsShowingSignUp: (isShowingSignUp: boolean) => void;
+}
+
+export const AuthCard = ({ isShowingSignUp, setIsShowingSignUp }: AuthCardProps) => {
   const { data: user } = useUser();
   const router = useRouter();
 
