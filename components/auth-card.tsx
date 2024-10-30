@@ -27,7 +27,7 @@ export const AuthCard = () => {
     <>
       <Card>
         <CardHeader>
-          <CardTitle>{isShowingSignUp ? "Sign Up" : "Only one step away."}</CardTitle>
+          <CardTitle>{isShowingSignUp ? "Only two steps away." : "Only one step away."}</CardTitle>
           <CardDescription>
             Take a leap of faith.
           </CardDescription>
