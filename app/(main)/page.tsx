@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge"; // Not being utilized, replace with another component from SHADC
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -32,17 +31,6 @@ export default function Home() {
           </div>
         </section>
         <section className="container mt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-            <div>
-              
-            </div>
-            <div>
-              
-            </div>
-            <div>
-                
-            </div>
-          </div>
         </section>
       </div>
     </>
