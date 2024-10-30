@@ -60,54 +60,64 @@ export const DemoDashboard: FC = () => {
   };
 
   return (
-    <>
-      <div className="hidden flex-col md:flex">
-        <div className="flex items-end justify-between space-y-2 mb-6">
-        </div>
-        
-        <div className="flex-1 space-y-4 pt-6">
-          <Card className="max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle>YouTube Thumbnail Generator</CardTitle>
-              <CardDescription>
-                Enter your video details to generate a custom thumbnail
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <Button
-                  type="submit"
-                  className="w-full"
-                  size="lg"
-                  disabled={loading}
-                >
-                  {loading ? "Generating..." : "Generate Thumbnail"}
-                </Button>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <Card className="w-full max-w-2xl border border-gray-800 bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">YouTube Thumbnail Generator</CardTitle>
+          <CardDescription className="text-gray-400">
+            Enter your video details to generate a custom thumbnail
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="title" className="text-sm font-medium text-gray-200">
+                Video Title
+              </label>
+              <Input
+                id="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                placeholder="Enter your video title"
+                className="bg-[#1A1F2E] border-gray-700 text-white"
+              />
+            </div>
 
-                {generatedImage && (
-                  <div className="mt-4">
-                    <h3 className="text-lg font-medium mb-2">Generated Thumbnail</h3>
-                    <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-                      <Image
-                        src={generatedImage}
-                        alt="Generated Thumbnail"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <Button 
-                      className="mt-2 w-full"
-                      onClick={() => window.open(generatedImage, '_blank')}
-                    >
-                      Download Thumbnail
-                    </Button>
-                  </div>
-                )}
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </>
+            <div className="space-y-2">
+              <label htmlFor="description" className="text-sm font-medium text-gray-200">
+                Video Description
+              </label>
+              <Textarea
+                id="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                placeholder="Enter your video description"
+                className="min-h-[100px] bg-[#1A1F2E] border-gray-700 text-white"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="channelName" className="text-sm font-medium text-gray-200">
+                Channel Name
+              </label>
+              <Input
+                id="channelName"
+                value={formData.channelName}
+                onChange={handleInputChange}
+                placeholder="Enter your channel name"
+                className="bg-[#1A1F2E] border-gray-700 text-white"
+              />
+            </div>
+
+            <Button 
+              type="submit" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Generate Thumbnail
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
