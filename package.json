@@ -1,7 +1,7 @@
 {
-  "name": "venefish",
-  "description": "Boilerplate & template for Vercel projects using Next.js, Firebase and shadcn/ui.",
-  "author": "Enesien Software <contact@enesien.com> (https://enesien.com)",
+  "name": "flame",
+  "description": "A tool used by creatives to generate stylish thumbnails using AI.",
+  "author": "Mahad Khan <mahadsuhaibkhan@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
