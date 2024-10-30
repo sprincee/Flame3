@@ -21,7 +21,7 @@ export default function Home() {
             </h1>
             <p className="max-w-2xl leading-normal text-muted-foreground sm:text-xl sm:leading-8">
               No design skills? No problem.
-              Just input your preferences, and Flame will generate multiple thumbnail options in seconds. 
+              Just input your preferences, and Flame will generate stylish thumbnail options in seconds. 
             </p>
             <div className="space-x-4">
               <Link href="/login">

@@ -2,6 +2,7 @@
 
 import { FC, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 import { MainNav } from "@/components/demo-dashboard/main-nav";
 import {
   Card,
@@ -20,11 +21,32 @@ export const DemoDashboard: FC = () => {
     description: "",
     channelName: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your thumbnail generation logic here
-    console.log("Generating thumbnail with:", formData);
+    setLoading(true);
+
+    try {
+      const prompt = `Create a YouTube thumbnail for a video titled "${formData.title}".
+      The thumbnail should be eye-catching and professional, with text that reads "${formData.title}".
+      Include branding for the channel "${formData.channelName}".
+      Style: Modern YouTube thumbnail, high contrast, engaging visuals.`;
+
+      const response = await axios.post('/api/generate-thumbnail', {
+        prompt,
+        title: formData.title,
+        description: formData.description,
+        channelName: formData.channelName,
+      });
+
+      setGeneratedImage(response.data.imageUrl);
+    } catch (error) {
+      console.error('Error generating thumbnail:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleInputChange = (
@@ -53,48 +75,34 @@ export const DemoDashboard: FC = () => {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <label htmlFor="title" className="text-sm font-medium">
-                    Video Title
-                  </label>
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                    placeholder="Enter your video title"
-                    className="w-full"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="description" className="text-sm font-medium">
-                    Video Description
-                  </label>
-                  <Textarea
-                    id="description"
-                    value={formData.description}
-                    onChange={handleInputChange}
-                    placeholder="Enter your video description"
-                    className="min-h-[100px]"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="channelName" className="text-sm font-medium">
-                    Channel Name
-                  </label>
-                  <Input
-                    id="channelName"
-                    value={formData.channelName}
-                    onChange={handleInputChange}
-                    placeholder="Enter your channel name"
-                    className="w-full"
-                  />
-                </div>
-
-                <Button type="submit" className="w-full" size="lg">
-                  Generate Thumbnail
+                <Button
+                  type="submit"
+                  className="w-full"
+                  size="lg"
+                  disabled={loading}
+                >
+                  {loading ? "Generating..." : "Generate Thumbnail"}
                 </Button>
+
+                {generatedImage && (
+                  <div className="mt-4">
+                    <h3 className="text-lg font-medium mb-2">Generated Thumbnail</h3>
+                    <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+                      <Image
+                        src={generatedImage}
+                        alt="Generated Thumbnail"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <Button 
+                      className="mt-2 w-full"
+                      onClick={() => window.open(generatedImage, '_blank')}
+                    >
+                      Download Thumbnail
+                    </Button>
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>
