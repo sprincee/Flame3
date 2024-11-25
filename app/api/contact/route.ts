@@ -2,7 +2,12 @@ import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
 import { signInWithEmailLink } from 'firebase/auth';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+const apiKey = process.env.SENDGRID_API_KEY;
+if (!apiKey) {
+    throw new Error('SENDGRID_API_KEY is not defined');
+}
+
+sgMail.setApiKey(apiKey);
 
 export async function POST(req: Request) {
     try {
