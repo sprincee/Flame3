@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/generate-thumbnail": {
+        "app/api/generate-thumbnail/route.ts": {
         "maxDuration": 60
       }
     }
