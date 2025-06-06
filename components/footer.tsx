@@ -21,7 +21,7 @@ export const Footer = () => {
         
         <div className="flex flex-col items-center gap-2 md:items-end">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="px-2 py-1 bg-muted rounded-md font-mono">v2.1.4</span>
+            <span className="px-2 py-1 bg-muted rounded-md font-mono">v1.1.0</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span>Built with</span>
