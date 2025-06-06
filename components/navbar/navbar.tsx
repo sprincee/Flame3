@@ -2,7 +2,7 @@ import { NavbarMobile } from "@/components/navbar/navbar-mobile";
 import { NavbarUserLinks } from "@/components/navbar/navbar-user-links";
 import { buttonVariants } from "@/components/ui/button";
 import { FlameKindling, ScanTextIcon } from "lucide-react";
-import { ModeToggle } from "@/components/ui/mode-toggle"; // Import the ModeToggle component
+import { ModeToggle } from "@/components/ui/mode-toggle"; 
 import Link from "next/link";
 import { FC } from "react";
 

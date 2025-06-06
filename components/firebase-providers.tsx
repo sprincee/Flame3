@@ -13,7 +13,6 @@ import { getFirestore } from "firebase/firestore";
 import { isBrowser } from "@/lib/utils";
 import { getAnalytics } from "firebase/analytics";
 import { FirebaseOptions } from "firebase/app";
-import App from "next/app";
 
 const config: FirebaseOptions = {
   apiKey: "AIzaSyBqaL1bJoHxJ6YimBo38SuvWG35_d8tplc",

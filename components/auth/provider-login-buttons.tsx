@@ -21,7 +21,6 @@ export const ProviderLoginButtons: FC<Props> = ({ onSignIn }) => {
     try {
       setIsLoading(true);
       await signInWithPopup(auth, provider);
-      // create user in your database here
       toast({ title: "Signed in!" });
       onSignIn?.();
     } catch (err: any) {
